@@ -1,4 +1,5 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 require "action_controller/metal"
 
 module ThemesForRails
@@ -29,7 +30,7 @@ module ThemesForRails
     
     def find_themed_asset(asset_name, asset_theme, asset_type, &block)
       path = asset_path(asset_name, asset_theme, asset_type)
-      if File.exists?(path)
+      if File.exist?(path)
         yield path, mime_type_for(request)
       elsif File.extname(path).blank?
         asset_name = "#{asset_name}.#{extension_from(request.path_info)}"
@@ -44,7 +45,7 @@ module ThemesForRails
     end
 
     def render_not_found
-      render :text => 'Not found', :status => 404
+      render plain: 'Not found', status: 404
     end
       
     def mime_type_for(request)

@@ -1,4 +1,5 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 module ThemesForRails
   module CommonMethods
 
@@ -7,7 +8,7 @@ module ThemesForRails
     def theme_name
       @cached_theme_name ||= begin
         case @theme_name
-        when Symbol then 
+        when Symbol
           self.respond_to?(@theme_name, true) ? self.send(@theme_name) : @theme_name.to_s
         when String then @theme_name
         else
@@ -27,8 +28,7 @@ module ThemesForRails
       end
     end
     
-    public
-    
+
     def valid_theme?
       !self.theme_name.nil?
     end

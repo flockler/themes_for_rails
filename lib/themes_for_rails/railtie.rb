@@ -1,4 +1,5 @@
-# encoding: utf-8
+# # frozen_string_literal: true
+
 module ThemesForRails
   class Railtie < ::Rails::Railtie
 
@@ -21,7 +22,8 @@ module ThemesForRails
       end
 
       ActiveSupport.on_load(:action_mailer) do
-        include ThemesForRails::ActionMailer
+        include ThemesForRails::ActionController
+        prepend ThemesForRails::ActionMailer
       end
     end
     
