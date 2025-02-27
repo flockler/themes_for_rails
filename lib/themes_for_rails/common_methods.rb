@@ -40,7 +40,7 @@ module ThemesForRails
     
     # will add the view path for a given theme name
     def add_theme_view_path_for(name)
-      self.view_paths.insert 0, ::ActionView::FileSystemResolver.new(theme_view_path_for(name))
+      self.prepend_view_path ::ActionView::FileSystemResolver.new(theme_view_path_for(name))
     end
 
     def public_theme_path
