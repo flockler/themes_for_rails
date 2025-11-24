@@ -5,7 +5,7 @@ require File.expand_path('../lib/themes_for_rails/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Lucas Florio"]
   gem.email         = ["lucasefe@gmail.com"]
-  gem.summary       = "Theme Support for Rails 3"
+  gem.summary       = "Theme Support for Rails"
   gem.description   = %q{It allows an application to have many different ways of rendering static assets and dynamic views.}
   gem.homepage      = "https://github.com/lucasefe/themes_for_rails"
 
@@ -16,9 +16,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = ThemesForRails::VERSION
 
-  gem.add_dependency('rails', ["~> 6.0"])
-  gem.add_development_dependency "sqlite3", ["1.4.2"]
+  gem.add_dependency('rails', [">= 6.0", "< 8.0"])
+  gem.add_development_dependency "sqlite3", ["~> 1.4"]
   gem.add_development_dependency "minitest", ["~> 5.1"]
-  gem.add_development_dependency "minitest-rails", ["~> 6.0"]
+  gem.add_development_dependency "minitest-rails", [">= 6.0", "< 8.0"]
   gem.add_development_dependency "mocha", ["~> 2.0"]
 end
