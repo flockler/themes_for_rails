@@ -16,7 +16,7 @@ module ThemesForRails
         end
       end
     end
-    
+
     def theme_name=(name)
       @theme_name = name
     end
@@ -27,20 +27,20 @@ module ThemesForRails
         add_theme_view_path
       end
     end
-    
+
 
     def valid_theme?
       !self.theme_name.nil?
     end
-    
+
     # will add the view path for the current theme
     def add_theme_view_path
       add_theme_view_path_for(self.theme_name)
     end
-    
+
     # will add the view path for a given theme name
     def add_theme_view_path_for(name)
-      self.view_paths.insert 0, ::ActionView::FileSystemResolver.new(theme_view_path_for(name))
+      self.prepend_view_path(::ActionView::FileSystemResolver.new(theme_view_path_for(name)))
     end
 
     def public_theme_path
