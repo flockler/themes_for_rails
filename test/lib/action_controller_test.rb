@@ -83,6 +83,13 @@ module ThemesForRails
         assert_equal view_path.to_s, theme_view_path
       end
 
+      test "reuse the theme's view path resolver across controller instances" do
+        @controller.theme 'default'
+        other_controller = ApplicationController.new
+        other_controller.theme 'default'
+        assert_same @controller.view_paths.first, other_controller.view_paths.first
+      end
+
       test "provide url method to access a given stylesheet file in the current theme" do
         @controller.theme 'default'
         assert_equal @controller.send(:current_theme_stylesheet_path, "style"), "/themes/default/stylesheets/style.css"
